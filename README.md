@@ -3,7 +3,12 @@ Binários
 
 ## Changelog
 
-### 20150427
+
+### 20150427(09/05/2015)
+
+- implementado a busca de histórico no SensorNet e VirtualSensorNet
+
+### 20150427(27/04/2015)
 
 - blending funcionando no virtualsensornet síncrona e assincronamente
 - adição de exemplos dos módulos de função para o blending

@@ -53,9 +53,9 @@ public class FnGetResult {
         requestFnTo.addValue("input", list);
         requestFnTo.addValue("input2", list);
 
-        ParameterizedRequestFn requestFn = new ParameterizedRequestFn(uri, requestFnTo);
+        ParameterizedRequestFn requestFn = new ParameterizedRequestFn(requestFnTo);
 
-        String address = requestFn.toString();
+        String address = requestFn.getRequestUri(uri);
 
         Response r = client.doGet(address);
         if (r.getStatusCode() == StatusCode.OK) {

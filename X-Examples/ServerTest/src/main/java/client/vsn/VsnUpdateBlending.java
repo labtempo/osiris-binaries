@@ -21,8 +21,6 @@ import br.uff.labtempo.omcp.common.Response;
 import br.uff.labtempo.omcp.common.StatusCode;
 import br.uff.labtempo.osiris.to.common.definitions.FunctionOperation;
 import br.uff.labtempo.osiris.to.virtualsensornet.BlendingVsnTo;
-import br.uff.labtempo.osiris.to.virtualsensornet.ConverterVsnTo;
-import br.uff.labtempo.osiris.to.virtualsensornet.LinkVsnTo;
 
 /**
  *
@@ -50,7 +48,7 @@ public class VsnUpdateBlending {
         long fldId2 = to.getFields().get(0).getId();
 
         to.setFunction(1);
-        to.setCallMode(FunctionOperation.ASYNCHRONOUS);
+        to.setCallMode(FunctionOperation.SYNCHRONOUS);
         to.setCallIntervalInMillis(2000);
         to.addRequestParam(1, "input"); //ParamTypeFnTo inputType = celsius
         to.addRequestParam(3, "input"); //ParamTypeFnTo inputType = celsius
