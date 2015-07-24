@@ -3,6 +3,12 @@ Binários
 
 ## Changelog
 
+### 20150722(22/07/2015)
+
+- Tentativa de sanar o bug do loop ao incializar os módulos 
+- mudanças internas no omcp
+- mudanças em algumas propriedades da api
+- criação de exchanges de forma automatizada pelo sensornet e virtualsensornet
 
 ### 20150427(09/05/2015)
 
