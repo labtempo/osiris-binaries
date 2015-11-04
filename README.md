@@ -22,4 +22,9 @@ Binários
 - mudanças na api
 - remoção de fila temporária no omcp quando requisitando pelo cliente 
 
+### 20151104(04/11/2015)
 
+- atualização da API
+- correção do bug do virtualsensornet no consumo de memoria e armazenamento de revisões
+- descoberto bug de valores strings
+- sensornet ainda não corrigido o armazenamento de revisões
