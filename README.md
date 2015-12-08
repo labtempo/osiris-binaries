@@ -3,6 +3,12 @@ Binários
 
 ## Changelog
 
+### 20151207(07/12/2015)
+
+- resolvidos 3 bugs no blending do VirtualSensorNet: no agendador de tarefas, nos parâmetros repetidos e trocados
+- incluído busca de link com query strings omcp://virtualsensornet.osiris/link/?sensor={id}&collector={id}&network={id}
+- pequenas alterações na api 
+
 ### 20150722(22/07/2015)
 
 - Tentativa de sanar o bug do loop ao incializar os módulos 
