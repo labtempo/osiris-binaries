@@ -6,13 +6,31 @@ This has the intent to organize the OSIRIS API jars and expose them as a open an
 so that everyone can import the OSIRIS API by just adding the following lines into your pom.xml:
 
 ```
-<repositories>
+<!-- osiris-binaries repository -->
+	<repositories>
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>file://${user.home}/osiris/osiris-binaries/API</url>
+			<url>https://github.com/aghigo/osiris-binaries/tree/master/API/mvn-repo</url>
 		</repository>
 	</repositories>
+```
+
+```
+<dependencies>
+		<!-- OSIRIS API -->
+		<dependency>
+			<groupId>br.uff.labtempo.osiris</groupId>
+			<artifactId>Osiris</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<!-- OSIRIS API -->
+		<dependency>
+			<groupId>br.uff.labtempo.osiris</groupId>
+			<artifactId>OsirisUtils</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+</dependencies>
 ```
 
 Jars are now versioned using [Semantic Versioning](http://semver.org/) notation ([RFC-2119](https://tools.ietf.org/html/rfc2119)).
