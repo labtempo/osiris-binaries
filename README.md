@@ -1,4 +1,22 @@
-Binários
+#Osiris Binaries
+
+This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
+
+This has the intent to organize the OSIRIS API jars and expose them as a open and free "maven-like" repository to the world,
+so that everyone can import the OSIRIS API by just adding the following lines into your pom.xml:
+
+```
+<repositories>
+		<repository>
+			<id>osiris-binaries</id>
+			<name>osiris-binaries</name>
+			<url>file://${user.home}/osiris/osiris-binaries/API</url>
+		</repository>
+	</repositories>
+```
+
+Jars are now versioned using [Semantic Versioning](http://semver.org/) notation ([RFC-2119](https://tools.ietf.org/html/rfc2119)).
+
 ======
 
 ## Changelog
