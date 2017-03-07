@@ -43,40 +43,40 @@ Jars are versioned using [Semantic Versioning](http://semver.org/) ([RFC-2119](h
 
 ### 20151207(07/12/2015) v.1.6.0
 
-- resolvidos 3 bugs no blending do VirtualSensorNet: no agendador de tarefas, nos parâmetros repetidos e trocados
-- incluído busca de link com query strings omcp://virtualsensornet.osiris/link/?sensor={id}&collector={id}&network={id}
-- pequenas alterações na api 
+- solved 3 bugs in VirtualSensorNet blending: in task scheduler and repeated and changed parameters.
+- included link search with query strings omcp://virtualsensornet.osiris/link/?sensor={id}&collector={id}&network={id} 
+- Little changes in the api
 
 ### 20151104(04/11/2015) v.1.5.0
 
-- atualização da API
-- correção do bug do virtualsensornet no consumo de memoria e armazenamento de revisões
-- descoberto bug de valores strings
-- sensornet ainda não corrigido o armazenamento de revisões
+- API update
+- Bug fix in VirtualSensorNet memory comsumption and revision storage.
+- Solved bug of string values.
+- SensorNet not yet solved the revision storage.
 
 ### 20150722(22/07/2015) v.1.4.0
 
-- Tentativa de sanar o bug do loop ao incializar os módulos 
-- mudanças internas no omcp
-- mudanças em algumas propriedades da api
-- criação de exchanges de forma automatizada pelo sensornet e virtualsensornet
+- Try to fix the bug on module initialization loop.
+- Internal changes in OMCP
+- Changes in some API properties
+- Exchange creation of automatized form by SensorNet and VirtualSensorNet
 
 ### 20150427(09/05/2015) v.1.3.0
 
-- implementado a busca de histórico no SensorNet e VirtualSensorNet
+- Implemented history search in SensorNet and VirtualSensorNet
 
 ### 20150427(27/04/2015) v.1.2.0
 
-- blending funcionando no virtualsensornet síncrona e assincronamente
-- adição de exemplos dos módulos de função para o blending
-- adição de um grupo de exemplos de requisições para o virtualsensornet
-- mudanças na api
-- remoção de fila temporária no omcp quando requisitando pelo cliente 
+- Blending working on VirtualSensorNet synchronous and asynchronously=
+- Adding function module examples for blending
+- Adding request example groups for VirtualSensorNet
+- Changes in API
+- removal of temporary queue on OMCP when requested by the client
 
 ### 20150419(19/04/2015) v.1.1.0
 
- - Segundo build dos jars da API do OSIRIS (Osiris-20150419.jar e OsirisUtils-20150419.jar)
+ - Second build of OSIRIS API jars (Osiris-20150419.jar e OsirisUtils-20150419.jar)
 
 ### 20150413(13/04/2015) v.1.0.0
 
- - Primeiro build dos jars da API do OSIRIS (Osiris-20150413.jar e OsirisUtils-20150413.jar)
+ - First build of OSIRIS API jars (Osiris-20150413.jar e OsirisUtils-20150413.jar)
