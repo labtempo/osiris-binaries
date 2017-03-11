@@ -1,41 +1,36 @@
 #Osiris Binaries
 
 This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
+This repository contais the jars for the OSIRIS API and the OMCP Server for the SensorNet and VirtualSensorNet modules.
 
-This has the intent to organize the OSIRIS API jars and expose them as a open and free maven repository to the world,
-so everyone can import the OSIRIS API by just adding the following lines into pom.xml:
+The OSIRIS API jars are exposed as a Maven repository so one can import it into its project by
+just adding the following lines into the pom.xml file:
 
-Add this maven repository:
+Add the repository:
 ```
-<!-- osiris-binaries repository -->
-	<repositories>
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
 			<url>https://github.com/aghigo/osiris-binaries/tree/master/API/mvn-repo</url>
 		</repository>
-	</repositories>
 ```
 
-Add OSIRIS API jars as dependencies:
+Add the dependencies:
 ```
-<dependencies>
-		<!-- OSIRIS API -->
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
 			<artifactId>Osiris</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-		<!-- OSIRIS API -->
+
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
 			<artifactId>OsirisUtils</artifactId>
 			<version>1.6.0</version>
 		</dependency>
-</dependencies>
 ```
 
-Jars are versioned using [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119)).
+The Jars version numbering are following the [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
 ======
 
