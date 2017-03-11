@@ -1,9 +1,9 @@
 #Osiris Binaries
 
 This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
-This repository contais the jars for the OSIRIS API and the OMCP Server for the SensorNet and VirtualSensorNet modules.
+This repository contais the jars for the OSIRIS API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
 
-The OSIRIS API jars are exposed as a Maven repository so one can import it into its project by
+The OSIRIS API jars are exposed as a Maven repository so one can import them into its project by
 just adding the following lines into the pom.xml file:
 
 Add the repository:
@@ -31,18 +31,17 @@ Add the dependencies:
 ```
 
 The Jars version numbering are following the [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
-
 ======
 
 ## Environment
 
-You can use Docker to configure a local environment for development and testing:
-
+You can use Docker to configure a local environment for development purposes with the help of the following script:
 ```
 cd <path_to>/osiris-binaries/infrastructure/development
 ./run.sh
-
 ```
+This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases
+and the OMCP server deamons for SensorNet and VirtualSensorNet modules.
 ======
 
 ## Changelog
