@@ -39,20 +39,7 @@ The Jars version numbering are following the [Semantic Versioning](http://semver
 You can use Docker to configure a local environment for development and testing:
 
 ```
-#PostgreSQL database for SensorNet and VirtualSensorNet Modules
-cd /infrastructure/development/postgresql
-./run.sh
-
-#RabbitMQ
-cd /infrastructure/development/rabbitmq
-./run.sh
-
-#SensorNet OMCP Server
-cd /infrastructure/development/sensornet-omcp
-./run.sh
-
-#VirtualSensorNet OMCP Server
-cd /infrastructure/development/virtualsensornet-omcp
+cd <path_to>/osiris-binaries/infrastructure/development
 ./run.sh
 
 ```
