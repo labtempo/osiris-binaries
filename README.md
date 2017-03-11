@@ -11,7 +11,7 @@ Add the repository:
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>https://github.com/aghigo/osiris-binaries/tree/master/API/mvn-repo</url>
+			<url>https://github.com/aghigo/osiris-binaries/tree/master/api/mvn-repo</url>
 		</repository>
 ```
 
@@ -32,6 +32,30 @@ Add the dependencies:
 
 The Jars version numbering are following the [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
+======
+
+## Environment
+
+You can use Docker to configure a local environment for development and testing:
+
+```
+#PostgreSQL database for SensorNet and VirtualSensorNet Modules
+cd /infrastructure/development/postgresql
+./run.sh
+
+#RabbitMQ
+cd /infrastructure/development/rabbitmq
+./run.sh
+
+#SensorNet OMCP Server
+cd /infrastructure/development/sensornet-omcp
+./run.sh
+
+#VirtualSensorNet OMCP Server
+cd /infrastructure/development/virtualsensornet-omcp
+./run.sh
+
+```
 ======
 
 ## Changelog
