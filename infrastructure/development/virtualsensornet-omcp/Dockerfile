@@ -1,5 +1,5 @@
 FROM openjdk
-
+    
 RUN mkdir -p /opt/virtualsensornet
 
 ADD config.properties /opt/virtualsensornet/config.properties

@@ -1,5 +1,13 @@
 FROM ubuntu
 
+ARG POSTGRESQL_PORT=5432
+ARG POSTGRESQL_USER_NAME=osiris
+ARG POSTGRESQL_USER_PASSWORD=osiris
+ARG POSTGRESQL_SENSORNET_DB_NAME=OsirisSN
+ARG POSTGRESQL_SENSORNETWEB_DB_NAME=OsirisWebSN
+ARG POSTGRESQL_VIRTUALSENSORNET_DB_NAME=OsirisVSN
+ARG POSTGRESQL_VIRTUALSENSORNETWEB_DB_NAME=OsirisWebVSN
+
 # Add the PostgreSQL PGP key to verify their Debian packages.
 # It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
@@ -24,15 +32,15 @@ USER postgres
 # Note: here we use ``&&\`` to run commands one after the other - the ``\``
 #       allows the RUN command to span multiple lines.
 RUN    /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER osiris WITH SUPERUSER PASSWORD 'osiris';" &&\
-    psql --command "DROP DATABASE IF EXISTS OsirisSN;" &&\
-    createdb -O osiris OsirisSN &&\
-    psql --command "DROP DATABASE IF EXISTS OsirisWebSN;" &&\
-    createdb -O osiris OsirisWebSN &&\
-    psql --command "DROP DATABASE IF EXISTS OsirisVSN;" &&\
-    createdb -O osiris OsirisVSN &&\
-    psql --command "DROP DATABASE IF EXISTS OsirisWebVSN;" &&\
-    createdb -O osiris OsirisWebVSN
+    psql --command "CREATE USER ${POSTGRESQL_USER_NAME} WITH SUPERUSER PASSWORD '${POSTGRESQL_USER_PASSWORD}';" &&\
+    psql --command "DROP DATABASE IF EXISTS ${POSTGRESQL_SENSORNET_DB_NAME};" &&\
+    createdb -O ${POSTGRESQL_USER_NAME} ${POSTGRESQL_SENSORNET_DB_NAME} &&\
+    psql --command "DROP DATABASE IF EXISTS ${POSTGRESQL_SENSORNETWEB_DB_NAME};" &&\
+    createdb -O ${POSTGRESQL_USER_NAME} ${POSTGRESQL_SENSORNETWEB_DB_NAME} &&\
+    psql --command "DROP DATABASE IF EXISTS ${POSTGRESQL_VIRTUALSENSORNET_DB_NAME};" &&\
+    createdb -O ${POSTGRESQL_USER_NAME} ${POSTGRESQL_VIRTUALSENSORNET_DB_NAME} &&\
+    psql --command "DROP DATABASE IF EXISTS ${POSTGRESQL_VIRTUALSENSORNETWEB_DB_NAME};" &&\
+    createdb -O ${POSTGRESQL_USER_NAME} ${POSTGRESQL_VIRTUALSENSORNETWEB_DB_NAME}
 
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
