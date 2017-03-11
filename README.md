@@ -40,8 +40,8 @@ You can use Docker to configure a local environment for development purposes wit
 cd <path_to>/osiris-binaries/infrastructure/development
 ./run.sh
 ```
-This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases
-and the OMCP server deamons for SensorNet and VirtualSensorNet modules.
+This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases and the OMCP server deamons for SensorNet and VirtualSensorNet modules.
+
 ======
 
 ## Changelog
