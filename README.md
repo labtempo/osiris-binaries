@@ -6,12 +6,14 @@ This repository contais the jars for the OSIRIS API and the OMCP Server deamons 
 The OSIRIS API jars are exposed as a Maven repository so one can import them into its project by
 just adding the following lines into the pom.xml file:
 
+First clone this repository into your local machine
+
 Add the repository:
 ```
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>https://github.com/aghigo/osiris-binaries/tree/master/api/mvn-repo</url>
+			<url>file://<path_to>/osiris-binaries/tree/master/api/mvn-repo</url>
 		</repository>
 ```
 
