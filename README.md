@@ -13,7 +13,7 @@ Add the repository:
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>file://<path_to>/osiris-binaries/tree/master/api/mvn-repo</url>
+			<url>file://<path_to>/osiris-binaries/api/mvn-repo</url>
 		</repository>
 ```
 
