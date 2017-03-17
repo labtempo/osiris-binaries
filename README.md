@@ -1,23 +1,33 @@
-#Osiris Binaries
+## Osiris Binaries
 
 This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
-This repository contais the jars for the OSIRIS API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
+Contais the jars for the OSIRIS API exposed as a Maven artifacts to ease the project dependency import.
+the API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules versioned based on [semver](http://semver.org/)
+Contains the infrastructure folder, which helps the deployment of OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers, needed to use the framework.
 
-The OSIRIS API jars are exposed as a Maven repository so one can import them into its project by
-just adding the following lines into the pom.xml file:
+## API as Maven dependency
+
+The OSIRIS API jars now are exposed as a Maven repository so one can import the library into its project by
+just adding the following lines into the respective pom.xml file:
 
 First clone this repository into your local machine
+```
+cd ~
+mkdir osiris
+cd ~/osiris
+git clone https://github.com/aghigo/osiris-binaries
+```
 
-Add the repository:
+Then add the repository into pom.xml (between <repositories></repositories>):
 ```
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>file://<path_to>/osiris-binaries/api/mvn-repo</url>
+			<url>file://<local_path_to>/osiris-binaries/api/mvn-repo</url>
 		</repository>
 ```
 
-Add the dependencies:
+And finally, add the dependencies (between <dependencies></dependencies>):
 ```
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
@@ -32,22 +42,19 @@ Add the dependencies:
 		</dependency>
 ```
 
-The Jars version numbering are following the [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
+Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-======
+## OSIRIS Environment setup
 
-## Environment
-
-You can use Docker to configure a local environment for development purposes with the help of the following script:
+You can use Docker to configure a local environment with the help of the following script:
 ```
 cd <path_to>/osiris-binaries/infrastructure/development
 ./run.sh
 ```
-This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases and the OMCP server deamons for SensorNet and VirtualSensorNet modules.
+This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases and the OMCP server deamons for SensorNet and VirtualSensorNet modules,
+need to use the framework itself.
 
-======
-
-## Changelog
+## Binaries Changelog
 
 ### 20151207(07/12/2015) v.1.6.0
 
