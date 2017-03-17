@@ -18,7 +18,7 @@ cd ~/osiris
 git clone https://github.com/aghigo/osiris-binaries
 ```
 
-Then add the repository into pom.xml (between <repositories></repositories>):
+Then add the repository into pom.xml:
 ```
 		<repository>
 			<id>osiris-binaries</id>
@@ -27,7 +27,7 @@ Then add the repository into pom.xml (between <repositories></repositories>):
 		</repository>
 ```
 
-And finally, add the dependencies (between <dependencies></dependencies>):
+And finally, add the dependencies into pom.xml:
 ```
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
@@ -44,15 +44,43 @@ And finally, add the dependencies (between <dependencies></dependencies>):
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## OSIRIS Environment setup
+## Local Environment setup
 
-You can use Docker to configure a local environment with the help of the following script:
+You can use Docker to configure a local environment needed to use the OSIRIS Framework (PostgreSQL, RabbitMQ, SensorNet and VirtualSensorNet)
+
+First of all, if you don't have Docker installed:
 ```
-cd <path_to>/osiris-binaries/infrastructure/development
-./run.sh
+cd osiris-binaries/infrastructure
+./install_docker.sh
 ```
-This will raise up an localhost instance of RabbitMQ, PostgreSQL with SensorNet and VirtualSensorNet databases and the OMCP server deamons for SensorNet and VirtualSensorNet modules,
-need to use the framework itself.
+
+Build image and run container for PostgreSQL:
+```
+cd osiris-binaries/infrastructure/postgresql
+./build_image.sh
+./run_container.sh
+```
+
+Build image and run container for RabbitMQ:
+```
+cd osiris-binaries/infrastructure/rabbitmq
+./build_image.sh
+./run_container.sh
+```
+
+Build image and run container for SensorNet OMCP Server:
+```
+cd osiris-binaries/infrastructure/sensornet-omcp
+./build_image.sh
+./run_container.sh
+```
+
+Build image and run container for VirtualSensorNet OMCP Server:
+```
+cd osiris-binaries/infrastructure/virtualsensornet-omcp
+./build_image.sh
+./run_container.sh
+```
 
 ## Binaries Changelog
 
