@@ -1,14 +1,9 @@
 #!/bin/bash
-
-echo "Building PostgreSQL Docker Image..."
+# build_docker_image.sh
+# description: build a PostgreSQL Docker image for OSIRIS Framework
 
 #Check if Docker is installed
-sudo docker --version >> /dev/null
-if [ $? -ne 0 ]
-then
-  "FAILED - Docker not found. You need Docker installed in order to build the image."
-  exit 1
-fi 
+. ./check_docker.sh || exit 1
 
 #Retrieve parameters
 IMAGE_NAME=${1:-osiris-postgresql_development}
@@ -20,13 +15,9 @@ SENSORNETWEB_DB_NAME=${6:-OsirisWebSN}
 VIRTUALSENSORNET_DB_NAME=${7:-OsirisVSN}
 VIRTUALSENSORNET_DB_NAME=${8:-OsirisWebSN}
 
-#Check if image already exist
-sudo docker images | grep ${IMAGE_NAME} >> /dev/null
-if [ $? -eq 0 ]
-then
-  echo "FAILED - PostgreSQL Docker image already exists."
-  exit 1
-fi
+. ./check_docker_image.sh || exit 1
+
+echo "Building Docker Image [${IMAGE_NAME}]..."
 
 #Build Image
 docker build -t ${IMAGE_NAME} \
@@ -41,10 +32,11 @@ docker build -t ${IMAGE_NAME} \
 #Check if image was built
 if [ $? -eq 0 ]
 then
-  echo "SUCCESS - PostgreSQL Docker image built successfully."
+  docker image inspect ${IMAGE_NAME}
+  echo "SUCCESS: Docker image [${IMAGE_NAME}] was built successfully."
   exit 0
 else
-  echo "FAILED - PostgreSQL Docker image could not be built."
+  echo "ERROR: Docker image [${IMAGE_NAME}] could not be built."
   exit 1
 fi
 
