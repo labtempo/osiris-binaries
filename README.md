@@ -44,42 +44,56 @@ And finally, add the dependencies into pom.xml:
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## Local Environment setup
+## Development/Test Local Environment setup
 
-You can use Docker to configure a local environment needed to use the OSIRIS Framework (PostgreSQL, RabbitMQ, SensorNet and VirtualSensorNet)
+You can use Docker to configure a local environment (with all modules in the same machine) needed to use the OSIRIS Framework
 
 First of all, if you don't have Docker installed:
 ```
 cd osiris-binaries/infrastructure
-./install_docker.sh
+./run_local_environment.sh
 ```
 
-Build image and run container for PostgreSQL:
-```
-cd osiris-binaries/infrastructure/postgresql
-./build_image.sh
-./run_container.sh
-```
+## Staging/Production distributed environment setup
 
-Build image and run container for RabbitMQ:
+You can set up a distribuited environment in your network, where every module located in a different host.
+You'll need to setup each module separately on its hosts:
+
+For RabbitMQ
 ```
 cd osiris-binaries/infrastructure/rabbitmq
-./build_image.sh
-./run_container.sh
+make build
+make run
 ```
-
-Build image and run container for SensorNet OMCP Server:
+For SensorNet database (PostgreSQL)
+```
+cd osiris-binaries/infrastructure/sensornet-postgresql
+#Run a container based on DockerHub postgres image
+make run 
+#Create the OsirisSN database
+make create
+```
+For SensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/sensornet-omcp
-./build_image.sh
-./run_container.sh
+./configure.sh
+make build
+make run
 ```
-
-Build image and run container for VirtualSensorNet OMCP Server:
+For VirtualSensorNet database (PostgreSQL)
+```
+cd osiris-binaries/infrastructure/virtualsensornet-postgresql
+#Run a container based on DockerHub postgres image
+make run 
+#Create the OsirisVSN database
+make create
+```
+For VirtualSensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-omcp
-./build_image.sh
-./run_container.sh
+./configure.sh
+make build
+make run
 ```
 
 ## Binaries Changelog

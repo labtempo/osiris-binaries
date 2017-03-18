@@ -5,7 +5,6 @@
 sudo docker -v >> /dev/null
 if [ $? -ne 0 ]
 then
-  echo "Installing Docker..."
   sudo apt-get update
   sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
   sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
@@ -19,8 +18,11 @@ then
     sudo usermod -aG docker $(whoami)
     echo "SUCCESS: Docker [$(docker -v)] installed succesfully."
   else
-    echo "ERROR: Docker was not installed correctly."
+    echo "ERROR: Failed to install Docker."
+    exit 1
   fi
 else
   echo "INFO: Docker [$(docker -v)] is already installed."
 fi
+
+return 0
