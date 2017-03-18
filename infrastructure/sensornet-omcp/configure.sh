@@ -6,6 +6,12 @@ IMAGE_NAME=${2:-alpine-sensornet-omcp}
 
 POSTGRESQL_CONTAINER_NAME=${3:-osiris-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
+if [ $? -ne 0 ]
+then
+  echo "ERROR: PostgreSQL IP Address not found. Aborted."
+  exit 1
+fi
+
 POSTGRESQL_PORT=${5:-5432}
 SENSORNET_DBNAME=${6:-OsirisVSN}
 POSTGRESQL_USERNAME=${7:-osiris}
@@ -13,6 +19,12 @@ POSTGRESQL_PASSWORD=${8:-osiris}
 
 RABBITMQ_CONTAINER_NAME=${9:-osiris-rabbitmq}
 RABBITMQ_IP=${10:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${RABBITMQ_CONTAINER_NAME})}
+if [ $? -ne 0 ]
+then
+  echo "ERROR: RabbitMQ IP Address not found. Aborted."
+  exit 1
+fi
+
 RABBITMQ_USERNAME=${11:-guest}
 RABBITMQ_PASSWORD=${12:-guest}
 
@@ -21,14 +33,14 @@ OSIRIS_SENSORNET_JAR_FILE_NAME=SensorNet-${OSIRIS_SENSORNET_VERSION}.jar
 #Check for PostgreSQL IP Address
 if [ -z ${POSTGRESQL_IP} ]
 then
-  echo "ERROR: Could not find PostgreSQL IP Address."
+  echo "ERROR: Could not find PostgreSQL IP Address. Aborted."
   exit 1
 fi
 
 #Check for RabbitMQ IP Address
 if [ -z ${RABBITMQ_IP} ]
 then
-  echo "ERROR: Could not find RabbitMQ IP Address."
+  echo "ERROR: Could not find RabbitMQ IP Address. Aborted."
   exit 1
 fi
 
@@ -46,7 +58,7 @@ echo 'rabbitmq.user.pass='${RABBITMQ_PASSWORD} >> config.properties
 JAR_FILE=./../../sensornet/${OSIRIS_SENSORNET_VERSION}/${OSIRIS_SENSORNET_JAR_FILE_NAME}
 if [ ! -e ${JAR_FILE} ]
 then
-  echo "FAILED - SensorNet jar file [${OSIRIS_SENSORNET_JAR_FILE_NAME}] could not be found"
+  echo "ERROR: SensorNet jar file [${OSIRIS_SENSORNET_JAR_FILE_NAME}] could not be found"
   exit 1
 fi
 

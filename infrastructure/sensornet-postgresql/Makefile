@@ -6,3 +6,6 @@ debug:
 
 run:
 	docker run -i -P -d --name=osiris-postgresql -p 5432:5432 alpine-postgres
+
+database:
+	psql -h localhost -p 5432 -U postgres --command="CREATE DATABASE OsirisSN OWNER postgres;"
