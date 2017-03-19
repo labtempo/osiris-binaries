@@ -6,17 +6,19 @@ IMAGE_NAME=${2:-alpine-virtualsensornet-omcp}
 
 POSTGRESQL_CONTAINER_NAME=${3:-virtualsensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
-POSTGRESQL_PORT=${5:-5433}
-VIRTUALSENSORNET_DBNAME=${6:-OsirisVSN}
+POSTGRESQL_PORT=${5:-5432}
+VIRTUALSENSORNET_DBNAME=${6:-virtualsensornet}
 POSTGRESQL_USERNAME=${7:-postgres}
 POSTGRESQL_PASSWORD=${8:-postgres}
 
+export PGPASSWORD='postgres'
 psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
 if [ $? -ne 0 ]
 then
   echo "ERROR: PostgreSQL IP Address not found. Aborted."
   exit 1
 fi
+unset PGPASSWORD
 
 RABBITMQ_CONTAINER_NAME=${9:-osiris-rabbitmq}
 RABBITMQ_IP=${10:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${RABBITMQ_CONTAINER_NAME})}
@@ -26,7 +28,7 @@ RABBITMQ_USERNAME=${11:-guest}
 RABBITMQ_PASSWORD=${12:-guest}
 OSIRIS_VIRTUALSENSORNET_JAR_FILE_NAME=VirtualSensorNet-${OSIRIS_VIRTUALSENSORNET_VERSION}.jar
 
-wget http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
+wget -qO- http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
 if [ $? -ne 0 ]
 then
   echo "ERROR: RabbitMQ IP Address not found. Aborted."
@@ -52,4 +54,9 @@ then
 fi
 
 #copy the latest version that will be deployed
-cp ${JAR_FILE} ./VirtualSensorNet.jar || echo "ERROR: failed to obtain the VirtualSensorNet.jar" && exit 1
+cp ${JAR_FILE} ./VirtualSensorNet.jar && chmod +x VirtualSensorNet.jar
+if [ $? -ne 0 ]
+then
+  echo "ERROR: Failed to obtain VirtualSensorNet module .jar file ${OSIRIS_VIRTUALSENSORNET_JAR_FILE_NAME}."
+  exit 1
+fi

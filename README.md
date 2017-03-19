@@ -44,20 +44,23 @@ And finally, add the dependencies into pom.xml:
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## Development/Test Local Environment setup
+## Environment setup
 
-You can use Docker to configure a local environment (with all modules in the same machine) needed to use the OSIRIS Framework
+You can set up a distributed environment for OSIRIS Framework.
+For development purposes, each Docker container can run in the same machine.
+For production purposes, each module should run on separated hosts.
 
-First of all, if you don't have Docker installed:
+If you don't have Docker installed:
 ```
 cd osiris-binaries/infrastructure
-./run_local_environment.sh
+. ./install_docker.sh
 ```
 
-## Staging/Production distributed environment setup
-
-You can set up a distribuited environment in your network, where every module located in a different host.
-You'll need to setup each module separately on its hosts:
+If you don't have PostgreSQL Client (psql) installed:
+```
+cd osiris-binaries/infrastructure
+. ./install_postgresql_client.sh
+```
 
 For RabbitMQ
 ```
@@ -68,30 +71,26 @@ make run
 For SensorNet database (PostgreSQL)
 ```
 cd osiris-binaries/infrastructure/sensornet-postgresql
-#Run a container based on DockerHub postgres image
-make run 
-#Create the OsirisSN database
+make run
 make create
 ```
 For SensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/sensornet-omcp
-./configure.sh
+make config
 make build
 make run
 ```
 For VirtualSensorNet database (PostgreSQL)
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-postgresql
-#Run a container based on DockerHub postgres image
-make run 
-#Create the OsirisVSN database
+make run
 make create
 ```
 For VirtualSensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-omcp
-./configure.sh
+make config
 make build
 make run
 ```

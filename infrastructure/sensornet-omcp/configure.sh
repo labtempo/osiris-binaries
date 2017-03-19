@@ -7,16 +7,18 @@ IMAGE_NAME=${2:-alpine-sensornet-omcp}
 POSTGRESQL_CONTAINER_NAME=${3:-sensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
 POSTGRESQL_PORT=${5:-5432}
-SENSORNET_DBNAME=${6:-OsirisSN}
+SENSORNET_DBNAME=${6:-sensornet}
 POSTGRESQL_USERNAME=${7:-postgres}
 POSTGRESQL_PASSWORD=${8:-postgres}
 
+export PGPASSWORD='postgres'
 psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
 if [ $? -ne 0 ]
 then
   echo "ERROR: PostgreSQL IP Address not found. Aborted."
   exit 1
 fi
+unset PGPASSWORD
 
 RABBITMQ_CONTAINER_NAME=${9:-osiris-rabbitmq}
 RABBITMQ_IP=${10:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${RABBITMQ_CONTAINER_NAME})}
@@ -26,7 +28,7 @@ RABBITMQ_USERNAME=${11:-guest}
 RABBITMQ_PASSWORD=${12:-guest}
 OSIRIS_SENSORNET_JAR_FILE_NAME=SensorNet-${OSIRIS_SENSORNET_VERSION}.jar
 
-wget http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
+wget -qO- http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
 if [ $? -ne 0 ]
 then
   echo "ERROR: RabbitMQ IP Address not found. Aborted."
@@ -52,4 +54,9 @@ then
 fi
 
 #copy the latest version that will be deployed
-cp ${JAR_FILE} ./SensorNet.jar || echo "ERROR: failed to obtain the SensorNet.jar" && exit 1
+cp ${JAR_FILE} ./SensorNet.jar && chmod +x SensorNet.jar
+if [ $? -ne 0 ]
+then
+  echo "ERROR: Failed to obtain SensorNet module .jar file ${OSIRIS_SENSORNET_JAR_FILE_NAME}."
+  exit 1
+fi
