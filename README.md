@@ -136,3 +136,17 @@ make run
 ### 20150413(13/04/2015) v.1.0.0
 
  - First build of OSIRIS API jars (Osiris-20150413.jar e OsirisUtils-20150413.jar)
+
+## About
+
+This is part of a Term Paper for the Bachelor of [Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/) graduation course at [UFF](http://uff.br/),
+Which consists of creating a user-friendly, multiplatform, Web Interface for the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules (SensorNet and VirtualSensorNet).
+
+## Authors
+
+[Andre Ghigo](https://github.com/aghigo)
+[Felippe Mauricio](https://github.com/felippemauricio)
+
+## Credits
+[Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
+[Felipe Ralph](https://github.com/println), creator of the OSIRIS.
