@@ -140,13 +140,13 @@ make run
 ## About
 
 This is part of a Term Paper for the Bachelor of [Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/) graduation course at [UFF](http://uff.br/),
-Which consists of creating a user-friendly, multiplatform, Web Interface for the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules (SensorNet and VirtualSensorNet).
+Which consists of creating a user-friendly, multiplatform, Web Interface for the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules ([SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet)).
 
 ## Authors
 
-[Andre Ghigo](https://github.com/aghigo)
-[Felippe Mauricio](https://github.com/felippemauricio)
+* [Andre Ghigo](https://github.com/aghigo)
+* [Felippe Mauricio](https://github.com/felippemauricio)
 
 ## Credits
-[Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
-[Felipe Ralph](https://github.com/println), creator of the OSIRIS.
+* [Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
+* [Felipe Ralph](https://github.com/println), creator of the OSIRIS.
