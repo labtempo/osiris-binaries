@@ -15,8 +15,17 @@ export PGPASSWORD='postgres'
 psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
 if [ $? -ne 0 ]
 then
-  echo "ERROR: PostgreSQL IP Address not found. Aborted."
-  exit 1
+  echo "ERROR: The PostgreSQL container could not be found with detected IP Address [${POSTGRESQL_IP}] and default port [${POSTGRESQL_PORT}]."
+  echo "Please provide the PostgreSQL IP Address on Network..."
+  echo
+  read POSTGRESQL_IP
+  psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
+  if [ $? -ne 0 ]
+  then
+    echo "ERROR: Could not connect to PostgreSQL with provided IP Address [${POSTGRESQL_IP}]. Aborted."
+    exit 1
+  fi
+  echo "INFO: PostgreSQL container found. OK."
 fi
 unset PGPASSWORD
 
@@ -31,8 +40,17 @@ OSIRIS_VIRTUALSENSORNET_JAR_FILE_NAME=VirtualSensorNet-${OSIRIS_VIRTUALSENSORNET
 wget -qO- http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
 if [ $? -ne 0 ]
 then
-  echo "ERROR: RabbitMQ IP Address not found. Aborted."
-  exit 1
+  echo "ERROR: The RabbitMQ container could not be found with detected IP Address [${RABBITMQ_IP}] and default port [${RABBITMQ_PORT}]. Aborted."
+  echo "Please provide the RabbitMQ IP Address on Network..."
+  echo
+  read RABBITMQ_IP
+  wget -qO- http://${RABBITMQ_IP}:${RABBITMQ_ADMIN_PORT}/ > /dev/null
+  if [ $? -eq 0 ]
+  then
+    echo "ERROR: Could not connect to RabbitMQ with providaded IP Address [${RABBITMQ_IP}]. Aborted."
+    exit 1
+  fi
+  echo "INFO: RabbitMQ container found. OK."
 fi
 
 #Generate the virtualsensornet configuration file

@@ -44,7 +44,7 @@ And finally, add the dependencies into pom.xml:
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## Environment setup
+## Environment setup (Ubuntu 16.04 64-bit)
 
 You can set up a distributed environment for OSIRIS Framework.
 For development purposes, each Docker container can run in the same machine.
@@ -68,12 +68,14 @@ cd osiris-binaries/infrastructure/rabbitmq
 make build
 make run
 ```
+
 For SensorNet database (PostgreSQL)
 ```
 cd osiris-binaries/infrastructure/sensornet-postgresql
 make run
 make create
 ```
+
 For SensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/sensornet-omcp
