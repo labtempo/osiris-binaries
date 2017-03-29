@@ -4,12 +4,12 @@
 # Requires: apt-get, apt-cache, systemctl, usermod
 
 #Check if docker is installed
-sudo docker -v >> /dev/null
+sudo docker -v > /dev/null
 if [ $? -ne 0 ]
 then
 
   #Check required tools to install Docker
-  apt-get -v && apt-cache -v && systemctl --version && usermod -h
+  apt-get -v > /dev/null && apt-cache -v > /dev/null && systemctl --version > /dev/null && usermod -h > /dev/null
   if [ $? -ne 0 ]
   then
     echo "ERROR: apt-get, apt-cache, systemctl or usermod not found."

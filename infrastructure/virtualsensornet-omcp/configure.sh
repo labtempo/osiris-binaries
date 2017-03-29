@@ -6,20 +6,20 @@ IMAGE_NAME=${2:-alpine-virtualsensornet-omcp}
 
 POSTGRESQL_CONTAINER_NAME=${3:-virtualsensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
-POSTGRESQL_PORT=${5:-5432}
+POSTGRESQL_PORT=${5:-5433}
 VIRTUALSENSORNET_DBNAME=${6:-virtualsensornet}
 POSTGRESQL_USERNAME=${7:-postgres}
 POSTGRESQL_PASSWORD=${8:-postgres}
 
-export PGPASSWORD='postgres'
-psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
+export PGPASSWORD=${POSTGRESQL_PASSWORD}
+psql -h ${POSTGRESQL_IP} -p 5432 -U ${POSTGRESQL_USERNAME} -d ${VIRTUALSENSORNET_DBNAME} --command='\q' > /dev/null
 if [ $? -ne 0 ]
 then
-  echo "ERROR: The PostgreSQL container could not be found with detected IP Address [${POSTGRESQL_IP}] and default port [${POSTGRESQL_PORT}]."
+  echo "ERROR: The PostgreSQL container could not be found with detected IP Address [${POSTGRESQL_IP}] and default port [5342]."
   echo "Please provide the PostgreSQL IP Address on Network..."
   echo
   read POSTGRESQL_IP
-  psql -h ${POSTGRESQL_IP} -p ${POSTGRESQL_PORT} -U postgres --command='\q' > /dev/null
+  psql -h ${POSTGRESQL_IP} -p 5432 -U ${POSTGRESQL_USERNAME} -d ${VIRTUALSENSORNET_DBNAME} --command='\q' > /dev/null
   if [ $? -ne 0 ]
   then
     echo "ERROR: Could not connect to PostgreSQL with provided IP Address [${POSTGRESQL_IP}]. Aborted."

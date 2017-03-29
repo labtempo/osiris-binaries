@@ -4,7 +4,7 @@
 # Requires: apt-get
 
 #Check if apt-get is installed
-apt-get -v
+apt-get -v > /dev/null
 if [ $? -ne 0 ]
 then
   echo "ERROR: apt-get not found."
