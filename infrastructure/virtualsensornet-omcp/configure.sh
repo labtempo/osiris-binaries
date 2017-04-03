@@ -7,7 +7,7 @@ IMAGE_NAME=${2:-alpine-virtualsensornet-omcp}
 POSTGRESQL_CONTAINER_NAME=${3:-virtualsensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
 echo "detected POSTGRESQL_IP = ${POSTGRESQL_IP}"
-POSTGRESQL_PORT=${5:-5433}
+POSTGRESQL_PORT=${5:-5432}
 VIRTUALSENSORNET_DBNAME=${6:-virtualsensornet}
 POSTGRESQL_USERNAME=${7:-postgres}
 POSTGRESQL_PASSWORD=${8:-postgres}
