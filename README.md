@@ -44,7 +44,7 @@ And finally, add the dependencies into pom.xml:
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## Local environment setup (Ubuntu 16.04 64-bit)
+## Local Development environment setup (Ubuntu 16.04 64-bit)
 
 You can setup a local environment to run and use the OSIRIS framework, with all containers running in the same host by just running one script:
 
@@ -53,20 +53,20 @@ cd osiris-binaries/infrastructure
 sudo ./run.sh
 ```
 
-## Staging/Production environment setup (Ubuntu 16.04 64-bit)
+## Distributed Staging/Production environment setup (Ubuntu 16.04 64-bit)
 
 You can set up a distributed environment for OSIRIS Framework.
-For production purposes, where each container should run on separated hosts.
+For production purposes, where each container (RabbitMQ, SensorNet database, SensorNet OMCP, VirtualSensorNet database, VirtualSensorNet OMCP) should run on separatedly hosts.
 
 Please do the following steps in the presented order:
 
-If you don't have Docker installed:
+If you don't have Docker installed (do that on all hosts):
 ```
 cd osiris-binaries/infrastructure
 . ./install_docker.sh
 ```
 
-If you don't have PostgreSQL Client (psql) installed:
+If you don't have PostgreSQL Client (psql) installed (do that on the SensorNet and VirtualSensorNet database hosts):
 ```
 cd osiris-binaries/infrastructure
 . ./install_postgresql_client.sh
@@ -85,7 +85,7 @@ cd osiris-binaries/infrastructure/sensornet-postgresql
 make run
 ```
 
-SensorNet OMCP Server
+SensorNet OMCP Server (Provide the RabbitMQ and SensorNet database IP addresses when asked)
 ```
 cd osiris-binaries/infrastructure/sensornet-omcp
 make config
@@ -97,7 +97,7 @@ VirtualSensorNet database (PostgreSQL)
 cd osiris-binaries/infrastructure/virtualsensornet-postgresql
 make run
 ```
-VirtualSensorNet OMCP Server
+VirtualSensorNet OMCP Server (Provide the RabbitMQ and VirtualSensorNet database IP addresses when asked)
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-omcp
 make config
