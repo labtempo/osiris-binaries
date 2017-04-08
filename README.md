@@ -60,7 +60,7 @@ sudo ./run.sh
 ## Distributed Staging/Production environment setup (Ubuntu 16.04 64-bit)
 
 You can set up a distributed environment for OSIRIS Framework.
-For production purposes, where each container (RabbitMQ, SensorNet database, SensorNet OMCP, VirtualSensorNet database, VirtualSensorNet OMCP) should run on separatedly hosts.
+For staging/production purposes, where each container (RabbitMQ, SensorNet database, SensorNet OMCP, VirtualSensorNet database, VirtualSensorNet OMCP) should run on separatedly hosts.
 
 Please do the following steps in the presented order:
 
