@@ -1,6 +1,6 @@
 ## Osiris Binaries
 
-* This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
+This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository with the following improvements:
 * Contais the jars of the OSIRIS API (Osiris and OsirisUtils) exposed as a Maven artifacts to ease the project dependency import.
 * Contais the binaries of the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
 * Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ), SensorNet and VirtualSensorNet OMCP Servers, required to use the framework, in development/staging/production environment.
