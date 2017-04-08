@@ -1,9 +1,9 @@
 ## Osiris Binaries
 
 * This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
-* Contais the jars for the OSIRIS API exposed as a Maven artifacts to ease the project dependency import.
-* Contais the API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules versioned based on [semver](http://semver.org/)
-* Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers, needed to use the framework.
+* Contais the jars of the OSIRIS API (Osiris and OsirisUtils) exposed as a Maven artifacts to ease the project dependency import.
+* Contais the binaries of the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
+* Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers - required to use the framework - in development/staging/production environments.
 
 ## Using the OSIRIS API as Maven dependency
 
@@ -27,7 +27,7 @@ Then add the repository into pom.xml:
 		</repository>
 ```
 
-And finally, add the dependencies into pom.xml:
+Add the dependencies into pom.xml:
 ```
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
@@ -41,12 +41,16 @@ And finally, add the dependencies into pom.xml:
 			<version>1.6.0</version>
 		</dependency>
 ```
-
-Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
+Finally, install the dependencies into your local maven repository (~/.m2 folder):
+```
+cd <path_to_your_java_project_pom_xml_folder>/
+mvn clean install -U
+```
+Jars versioning based on [Semantic Versioning](http://semver.org/) specification ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
 ## Local Development environment setup (Ubuntu 16.04 64-bit)
 
-You can setup a local environment to run and use the OSIRIS framework, with all containers running in the same host by just running one script:
+You can setup a local environment to run and use the OSIRIS framework, with all containers running in the same host by just running a single script:
 
 ```
 cd osiris-binaries/infrastructure
