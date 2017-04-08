@@ -3,14 +3,14 @@
 * This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
 * Contais the jars of the OSIRIS API (Osiris and OsirisUtils) exposed as a Maven artifacts to ease the project dependency import.
 * Contais the binaries of the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
-* Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers - required to use the framework - in development/staging/production environments.
+* Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ), SensorNet and VirtualSensorNet OMCP Servers, required to use the framework, in development/staging/production environment.
 
 ## Using the OSIRIS API as Maven dependency
 
 The OSIRIS API jars now are exposed as a Maven repository so one can import the library into its project by
 just adding the following lines into the respective pom.xml file:
 
-First clone this repository into your local machine
+First of all, clone this repository into your local machine:
 ```
 cd ~
 mkdir osiris
@@ -18,7 +18,7 @@ cd ~/osiris
 git clone https://github.com/aghigo/osiris-binaries
 ```
 
-Then add the repository into pom.xml:
+Then add the repository into the pom.xml file:
 ```
 		<repository>
 			<id>osiris-binaries</id>
@@ -27,7 +27,7 @@ Then add the repository into pom.xml:
 		</repository>
 ```
 
-Add the dependencies into pom.xml:
+Add the dependencies into the pom.xml file:
 ```
 		<dependency>
 			<groupId>br.uff.labtempo.osiris</groupId>
@@ -46,7 +46,7 @@ Finally, install the dependencies into your local maven repository (~/.m2 folder
 cd <path_to_your_java_project_pom_xml_folder>/
 mvn clean install -U
 ```
-Jars versioning based on [Semantic Versioning](http://semver.org/) specification ([RFC-2119](https://tools.ietf.org/html/rfc2119))
+Jars versioning is based on [Semantic Versioning](http://semver.org/) specification ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
 ## Local Development environment setup (Ubuntu 16.04 64-bit)
 
@@ -59,7 +59,7 @@ sudo ./run.sh
 
 ## Distributed Staging/Production environment setup (Ubuntu 16.04 64-bit)
 
-You can set up a distributed environment for OSIRIS Framework.
+You can set up a distributed environment for OSIRIS Framework
 For staging/production purposes, where each container (RabbitMQ, SensorNet database, SensorNet OMCP, VirtualSensorNet database, VirtualSensorNet OMCP) should run on separatedly hosts.
 
 Please do the following steps in the presented order:
