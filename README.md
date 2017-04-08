@@ -1,11 +1,11 @@
 ## Osiris Binaries
 
-This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
-Contais the jars for the OSIRIS API exposed as a Maven artifacts to ease the project dependency import.
-the API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules versioned based on [semver](http://semver.org/)
-Contains the infrastructure folder, which helps the deployment of OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers, needed to use the framework.
+* This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository.
+* Contais the jars for the OSIRIS API exposed as a Maven artifacts to ease the project dependency import.
+* Contais the API and the OMCP Server deamons for the SensorNet and VirtualSensorNet modules versioned based on [semver](http://semver.org/)
+* Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ) and OMCP Servers, needed to use the framework.
 
-## API as Maven dependency
+## Using the OSIRIS API as Maven dependency
 
 The OSIRIS API jars now are exposed as a Maven repository so one can import the library into its project by
 just adding the following lines into the respective pom.xml file:
@@ -25,7 +25,7 @@ Then add the repository into pom.xml:
 			<name>osiris-binaries</name>
 			<url>file://<local_path_to>/osiris-binaries/api/mvn-repo</url>
 		</repository>
-```
+	```
 
 And finally, add the dependencies into pom.xml:
 ```
@@ -44,11 +44,21 @@ And finally, add the dependencies into pom.xml:
 
 Jars versioning based on [Semantic Versioning](http://semver.org/) ([RFC-2119](https://tools.ietf.org/html/rfc2119))
 
-## Environment setup (Ubuntu 16.04 64-bit)
+## Local environment setup (Ubuntu 16.04 64-bit)
+
+You can setup a local environment to run and use the OSIRIS framework, with all containers running in the same host by just running one script:
+
+```
+cd osiris-binaries/infrastructure
+sudo ./run.sh
+```
+
+## Staging/Production environment setup (Ubuntu 16.04 64-bit)
 
 You can set up a distributed environment for OSIRIS Framework.
-For development purposes, each Docker container can run in the same machine.
-For production purposes, each module should run on separated hosts.
+For production purposes, where each container should run on separated hosts.
+
+Please do the following steps in the presented order:
 
 If you don't have Docker installed:
 ```
@@ -62,34 +72,32 @@ cd osiris-binaries/infrastructure
 . ./install_postgresql_client.sh
 ```
 
-For RabbitMQ
+RabbitMQ:
 ```
 cd osiris-binaries/infrastructure/rabbitmq
 make build
 make run
 ```
 
-For SensorNet database (PostgreSQL)
+SensorNet database (PostgreSQL)
 ```
 cd osiris-binaries/infrastructure/sensornet-postgresql
 make run
-make create
 ```
 
-For SensorNet OMCP Server
+SensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/sensornet-omcp
 make config
 make build
 make run
 ```
-For VirtualSensorNet database (PostgreSQL)
+VirtualSensorNet database (PostgreSQL)
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-postgresql
 make run
-make create
 ```
-For VirtualSensorNet OMCP Server
+VirtualSensorNet OMCP Server
 ```
 cd osiris-binaries/infrastructure/virtualsensornet-omcp
 make config
@@ -141,8 +149,8 @@ make run
 
 ## About
 
-This is part of a Term Paper for the Bachelor of [Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/) graduation course at [UFF](http://uff.br/),
-Which consists of creating a user-friendly, multiplatform, Web Interface for the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules ([SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet)).
+This is part of the Undergraduate Thesis for the Bachelor of [Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/) course at [Universidade Federal Fluminense](http://uff.br/),
+Which consists in creating a user-friendly Web Interface the manage the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules: ([SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet)).
 
 ## Authors
 
@@ -151,4 +159,4 @@ Which consists of creating a user-friendly, multiplatform, Web Interface for the
 
 ## Credits
 * [Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
-* [Felipe Ralph](https://github.com/println), creator of the OSIRIS.
+* [Felipe Ralph](https://github.com/println), creator of the [OSIRIS Framework](https://github.com/labtempo/osiris/wiki).
