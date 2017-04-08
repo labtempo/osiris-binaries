@@ -25,7 +25,7 @@ Then add the repository into pom.xml:
 			<name>osiris-binaries</name>
 			<url>file://<local_path_to>/osiris-binaries/api/mvn-repo</url>
 		</repository>
-	```
+```
 
 And finally, add the dependencies into pom.xml:
 ```
