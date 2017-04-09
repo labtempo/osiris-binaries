@@ -153,8 +153,9 @@ make run
 
 ## About
 
-This is part of the Undergraduate Thesis for the Bachelor of [Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/) course at [Universidade Federal Fluminense](http://uff.br/),
-Which consists in creating a user-friendly Web Interface the manage the [OSIRIS framework](https://github.com/labtempo/osiris/wiki) modules: ([SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet)).
+This is part of a Undergraduate Thesis for the [Bachelor of Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/undergraduate-programs/information-systems) course at [Universidade Federal Fluminense](www.uff.br/)(UFF).
+* The main goal consists in create a user-friendly Web Interface to manage the [OSIRIS Framework](https://github.com/labtempo/osiris/wiki) modules [SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet).
+* The OSIRIS is a framework, created at UFF's [Labtempo](https://github.com/labtempo/), that allows the implementation of sensor-based network monitoring systems. For example: suppose one have a datacenter and wants to put sensors to monitor its temperature, luminosity or any measure to manage and keep track of that environment. So OSIRIS can solve that. OSIRIS was built to monitor any kind of environment.
 
 ## Authors
 
