@@ -23,7 +23,7 @@ Then add the repository into the pom.xml file:
 		<repository>
 			<id>osiris-binaries</id>
 			<name>osiris-binaries</name>
-			<url>file://<local_path_to>/osiris-binaries/api/mvn-repo</url>
+			<url>file://${user.home}/osiris/osiris-binaries/api/mvn-repo</url>
 		</repository>
 ```
 
@@ -43,7 +43,7 @@ Add the dependencies into the pom.xml file:
 ```
 Finally, install the dependencies into your local maven repository (~/.m2 folder):
 ```
-cd <path_to_your_java_project_pom_xml_folder>/
+cd path/to/your_java_project/pom_xml_folder/
 mvn clean install -U
 ```
 Jars versioning is based on [Semantic Versioning](http://semver.org/) specification ([RFC-2119](https://tools.ietf.org/html/rfc2119))
