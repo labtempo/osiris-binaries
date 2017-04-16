@@ -118,3 +118,26 @@ else
         make run
     fi
 fi
+
+#Create sum.function module
+cd ../sum-function
+docker ps | grep osiris-sum-function > /dev/null
+if [ $? -eq 0 ]
+then
+    echo "INFO: sum.function container [osiris-sum-function] is already running."
+else
+    docker ps -a | grep osiris-sum-function > /dev/null
+    if [ $? -eq 0 ]
+    then
+        #Container exists but is not running
+        docker start osiris-sum-function
+    else
+        #Container does not exists.
+        make config
+        make build
+        make run
+    fi
+fi
+
+
+
