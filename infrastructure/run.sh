@@ -139,5 +139,63 @@ else
     fi
 fi
 
+#Create average.function module
+cd ../average-function
+docker ps | grep osiris-average-function > /dev/null
+if [ $? -eq 0 ]
+then
+    echo "INFO: average.function container [osiris-average-function] is already running."
+else
+    docker ps -a | grep osiris-average-function > /dev/null
+    if [ $? -eq 0 ]
+    then
+        #Container exists but is not running
+        docker start osiris-average-function
+    else
+        #Container does not exists.
+        make config
+        make build
+        make run
+    fi
+fi
 
 
+#Create min.function module
+cd ../min-function
+docker ps | grep osiris-min-function > /dev/null
+if [ $? -eq 0 ]
+then
+    echo "INFO: min.function container [osiris-min-function] is already running."
+else
+    docker ps -a | grep osiris-min-function > /dev/null
+    if [ $? -eq 0 ]
+    then
+        #Container exists but is not running
+        docker start osiris-min-function
+    else
+        #Container does not exists.
+        make config
+        make build
+        make run
+    fi
+fi
+
+#Create max.function module
+cd ../max-function
+docker ps | grep osiris-max-function > /dev/null
+if [ $? -eq 0 ]
+then
+    echo "INFO: max.function container [osiris-max-function] is already running."
+else
+    docker ps -a | grep osiris-max-function > /dev/null
+    if [ $? -eq 0 ]
+    then
+        #Container exists but is not running
+        docker start osiris-max-function
+    else
+        #Container does not exists.
+        make config
+        make build
+        make run
+    fi
+fi

@@ -62,7 +62,9 @@ sudo ./run.sh
 You can set up a distributed environment for OSIRIS Framework
 For staging/production purposes, where each container (RabbitMQ, SensorNet database, SensorNet OMCP, VirtualSensorNet database, VirtualSensorNet OMCP) should run on separatedly hosts.
 
+
 Please do the following steps in the presented order:
+Caution: make sure that the following default ports are free: 5672, 15672, 5432, 5433, 8090, 8091, 8092, 8093, 8094, 8095
 
 If you don't have Docker installed (do that on all hosts):
 ```
@@ -111,6 +113,27 @@ make run
 Sum Function (Provide the RabbitMQ IP Address when asked)
 ```
 cd osiris-binaries/infrastructure/sum-function
+make config
+make build
+make run
+```
+Average Function (Provide the RabbitMQ IP Address when asked)
+```
+cd osiris-binaries/infrastructure/average-function
+make config
+make build
+make run
+```
+Min Function (Provide the RabbitMQ IP Address when asked)
+```
+cd osiris-binaries/infrastructure/min-function
+make config
+make build
+make run
+```
+Max Function (Provide the RabbitMQ IP Address when asked)
+```
+cd osiris-binaries/infrastructure/max-function
 make config
 make build
 make run
