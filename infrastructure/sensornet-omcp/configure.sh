@@ -4,15 +4,13 @@
 OSIRIS_SENSORNET_VERSION=${1:-1.6.0}
 IMAGE_NAME=${2:-alpine-sensornet-omcp}
 
-POSTGRESQL_CONTAINER_NAME=${3:-sensornet-postgresql}
+POSTGRESQL_CONTAINER_NAME=${3:-osiris-sensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
 echo "detected POSTGRESQL_IP = ${POSTGRESQL_IP}"
 POSTGRESQL_PORT=${5:-5432}
 SENSORNET_DBNAME=${6:-sensornet}
 POSTGRESQL_USERNAME=${7:-postgres}
 POSTGRESQL_PASSWORD=${8:-postgres}
-
-
 
 RABBITMQ_CONTAINER_NAME=${9:-osiris-rabbitmq}
 RABBITMQ_IP=${10:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${RABBITMQ_CONTAINER_NAME})}

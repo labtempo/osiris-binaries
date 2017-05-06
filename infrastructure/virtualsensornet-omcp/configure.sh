@@ -4,7 +4,7 @@
 OSIRIS_VIRTUALSENSORNET_VERSION=${1:-1.6.0}
 IMAGE_NAME=${2:-alpine-virtualsensornet-omcp}
 
-POSTGRESQL_CONTAINER_NAME=${3:-virtualsensornet-postgresql}
+POSTGRESQL_CONTAINER_NAME=${3:-osiris-virtualsensornet-postgresql}
 POSTGRESQL_IP=${4:-$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' ${POSTGRESQL_CONTAINER_NAME})}
 echo "detected POSTGRESQL_IP = ${POSTGRESQL_IP}"
 POSTGRESQL_PORT=${5:-5432}
