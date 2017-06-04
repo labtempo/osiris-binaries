@@ -1,0 +1,13 @@
+version: '2'
+services:
+  osiris-sensornet-database:
+    container_name: osiris-sensornet-database-container
+    image: postgres
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=sensornet
+    volumes:
+    - ./volume:/var/lib/postgresql/data

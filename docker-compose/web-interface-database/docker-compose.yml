@@ -1,0 +1,23 @@
+version: '2'
+services:
+  osiris-web-database:
+    container_name: osiris-web-database-container
+    image: postgres
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=osirisweb
+    ports:
+    - "5434:5432"
+    volumes:
+    - ./volume:/var/lib/postgresql/data
+    depends_on:
+    - osiris-communication-layer
+    - osiris-sensornet-database
+    - osiris-sensornet-omcp
+    - osiris-virtualsensornet-database
+    - osiris-virtualsensornet-omcp
+    - osiris-average-function
+    - osiris-sum-function
+    - osiris-min-function
+    - osiris-max-function

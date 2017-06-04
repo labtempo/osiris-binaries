@@ -1,0 +1,21 @@
+version: '2'
+services:
+  osiris-web-frontend:
+    container_name: osiris-web-frontend-container
+    build: .
+    ports:
+    - "3000:3000"
+    links:
+    - osiris-web-backend
+    depends_on:
+    - osiris-communication-layer
+    - osiris-sensornet-database
+    - osiris-sensornet-omcp
+    - osiris-virtualsensornet-database
+    - osiris-virtualsensornet-omcp
+    - osiris-average-function
+    - osiris-sum-function
+    - osiris-min-function
+    - osiris-max-function
+    - osiris-web-database
+    - osiris-web-backend

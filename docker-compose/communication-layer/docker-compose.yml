@@ -1,0 +1,11 @@
+version: '2'
+services:
+  osiris-communication-layer:
+    container_name: osiris-communication-layer-container
+    build: .
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+    volumes:
+    - ./volume:/var/lib/rabbitmq
+    - ./volume/mnesia:/var/lib/rabbitmq/mnesia
