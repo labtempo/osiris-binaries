@@ -1,5 +1,6 @@
 #!bin/bash
 #Install local OSIRIS environment for development purposes
+#All modules on the same host machine, installed manually directly, without docker
 #For linux Ubuntu/Debian 64-bits OS
 
 cd ~
@@ -47,49 +48,49 @@ EOF
 su $LOCAL_USER
 
 #Install SensorNet OMCP
-echo 'postgres.server.db=sensornet' > osiris-binaries/sensornet/1.6.0/config.properties
-echo 'postgres.server.ip=localhost' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'postgres.server.port=5432' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'postgres.user.name=postgres' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'postgres.user.pass=postgres' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'rabbitmq.server.ip=localhost' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/sensornet/1.6.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/sensornet/1.6.0/config.properties
+echo 'postgres.server.db=sensornet' > osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'postgres.server.ip=localhost' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'postgres.server.port=5432' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'postgres.user.name=postgres' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'postgres.user.pass=postgres' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'rabbitmq.server.ip=localhost' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/sensornet/1.6.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/sensornet/1.6.0/config.properties && \
 nohup java -jar osiris-binaries/sensornet/1.6.0/SensorNet-1.6.0.jar &
 
 #Install VirtualSensorNet OMCP
-echo 'postgres.server.db=virtualsensornet' > osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'postgres.server.ip=localhost' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'postgres.server.port=5432' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'postgres.user.name=postgres' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'postgres.user.pass=postgres' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'rabbitmq.server.ip=localhost' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/virtualsensornet/1.6.0/config.properties
+echo 'postgres.server.db=virtualsensornet' > osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'postgres.server.ip=localhost' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'postgres.server.port=5432' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'postgres.user.name=postgres' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'postgres.user.pass=postgres' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'rabbitmq.server.ip=localhost' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/virtualsensornet/1.6.0/config.properties && \
 nohup java -jar osiris-binaries/virtualsensornet/1.6.0/VirtualSensorNet-1.6.0.jar &
 
 #Average Function
-echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/average/1.0.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/average/1.0.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/average/1.0.0/config.properties
+echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/average/1.0.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/average/1.0.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/average/1.0.0/config.properties && \
 nohup java -jar osiris-binaries/function/average/1.0.0/osiris-average-function-1.0.0.jar &
 
 #Sum Function
-echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/sum/1.0.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/sum/1.0.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/sum/1.0.0/config.properties
+echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/sum/1.0.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/sum/1.0.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/sum/1.0.0/config.properties && \
 nohup java -jar osiris-binaries/function/sum/1.0.0/osiris-sum-function-1.0.0.jar &
 
 #Min Function
-echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/min/1.0.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/min/1.0.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/min/1.0.0/config.properties
+echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/min/1.0.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/min/1.0.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/min/1.0.0/config.properties && \
 nohup java -jar osiris-binaries/function/min/1.0.0/osiris-min-function-1.0.0.jar &
 
 #Max Function
-echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/max/1.0.0/config.properties
-echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/max/1.0.0/config.properties
-echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/max/1.0.0/config.properties
+echo 'rabbitmq.server.ip=localhost' > osiris-binaries/function/max/1.0.0/config.properties && \
+echo 'rabbitmq.user.name=guest' >> osiris-binaries/function/max/1.0.0/config.properties && \
+echo 'rabbitmq.user.pass=guest' >> osiris-binaries/function/max/1.0.0/config.properties && \
 nohup java -jar osiris-binaries/function/max/1.0.0/osiris-max-function-1.0.0.jar &
 
 #Web Backend
@@ -99,6 +100,9 @@ mvn clean install package -U
 
 #Web Frontend
 sudo apt-get install npm
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
 cd ~/Server/osiris-web-frontend
 npm install
 nohup npm start &
