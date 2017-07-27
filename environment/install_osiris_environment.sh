@@ -1,8 +1,9 @@
 #!bin/bash
 #Install local OSIRIS environment for development purposes
 #All modules on the same host machine, installed manually directly, without docker
-#For linux Ubuntu/Debian 64-bits OS
+#For linux Ubuntu/Debian 64-bits OS (requires wget and apt-get)
 
+#Home folder of the OSIRIS repositories
 cd ~
 mkdir Server
 cd Server
