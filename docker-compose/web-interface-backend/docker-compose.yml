@@ -1,0 +1,21 @@
+version: '2'
+services:
+  osiris-web-backend:
+    container_name: osiris-web-backend-container
+    build: .
+    ports:
+    - "8080:8080"
+    links:
+    - osiris-communication-layer
+    - osiris-web-database
+    depends_on:
+    - osiris-communication-layer
+    - osiris-sensornet-database
+    - osiris-sensornet-omcp
+    - osiris-virtualsensornet-database
+    - osiris-virtualsensornet-omcp
+    - osiris-average-function
+    - osiris-sum-function
+    - osiris-min-function
+    - osiris-max-function
+    - osiris-web-database

@@ -1,0 +1,25 @@
+version: '2'
+services:    
+  osiris-virtualsensornet-omcp:
+    container_name: osiris-virtualsensornet-omcp-container
+    build: .
+    ports:
+    - "8082:8082"
+    environment:
+    - VIRTUALSENSORNET_VERSION=1.6.0
+    - VIRTUALSENSORNET_DBNAME=virtualsensornet
+    - POSTGRESQL_IP=localhost
+    - POSTGRESQL_PORT=4533
+    - POSTGRESQL_USERNAME=postgres
+    - POSTGRESQL_PASSWORD=postgres
+    - RABBITMQ_IP=localhost
+    - RABBITMQ_USERNAME=guest
+    - RABBITMQ_PASSWORD=guest
+    links:
+    - osiris-communication-layer
+    - osiris-virtualsensornet-database
+    depends_on:
+    - osiris-communication-layer
+    - osiris-sensornet-database
+    - osiris-sensornet-omcp
+    - osiris-virtualsensornet-database

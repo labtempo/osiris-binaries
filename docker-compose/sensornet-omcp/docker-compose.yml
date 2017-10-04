@@ -1,0 +1,23 @@
+version: '2'
+services:
+  osiris-sensornet-omcp:
+    container_name: osiris-sensornet-omcp-container
+    build: .
+    environment:
+    - SENSORNET_VERSION=1.6.0
+    - SENSORNET_DBNAME=sensornet
+    - POSTGRESQL_IP=localhost
+    - POSTGRESQL_PORT=4532
+    - POSTGRESQL_USERNAME=postgres
+    - POSTGRESQL_PASSWORD=postgres
+    - RABBITMQ_IP=localhost
+    - RABBITMQ_USERNAME=guest
+    - RABBITMQ_PASSWORD=guest
+    ports:
+    - "8081:8081"
+    links:
+    - osiris-communication-layer
+    - osiris-sensornet-database
+    depends_on:
+    - osiris-communication-layer
+    - osiris-sensornet-database
