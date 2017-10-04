@@ -4,18 +4,19 @@
 #For linux Ubuntu/Debian 64-bits OS (requires wget and apt-get)
 
 #Home folder of the OSIRIS repositories
-cd ~
-mkdir Server
-cd Server
+
+OSIRIS_HOME=~/osiris
+mkdir ${OSIRIS_HOME}
+cd ${OSIRIS_HOME}
 
 #Install git
 sudo apt-get install git
 
 #clone OSIRIS repositories
-git clone https://github.com/aghigo/osiris osiris-framework
-git clone https://github.com/aghigo/osiris-binaries
-git clone https://github.com/aghigo/osiris-web-backend
-git clone https://github.com/felippemauricio/osiris-web osiris-web-frontend
+git clone https://github.com/labtempo/osiris osiris-framework
+git clone https://github.com/labtempo/osiris-binaries
+git clone https://github.com/labtempo/osiris-web-backend
+git clone https://github.com/labtempo/osiris_webapp osiris-web-frontend
 
 #Install java (jdk 1.8)
 sudo add-apt-repository ppa:webupd8team/java
@@ -104,6 +105,6 @@ sudo apt-get install npm
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
-cd ~/Server/osiris-web-frontend
+cd ${OSIRIS_HOME}/osiris-web-frontend
 npm install
 nohup npm start &
