@@ -1,6 +1,5 @@
 ## Osiris Binaries
 
-This is a fork of the [labtempo/osiris-binaries](https://github.com/labtempo/osiris-binaries) original repository with the following improvements:
 * Contains the jars of the OSIRIS API (Osiris and OsirisUtils) exposed as a Maven artifacts to ease the project dependency import.
 * Contains the binaries of the OMCP Server deamons for the SensorNet and VirtualSensorNet modules.
 * Contains the infrastructure folder with scripts that helps the deployment of the OSIRIS database (PostgreSQL), Queue (RabbitMQ) and the modules (SensorNet, VirtualSensorNet, Function), required to use the framework, in development/staging/production environment.
@@ -183,15 +182,13 @@ make run
 
 ## About
 
-This is part of a Undergraduate Thesis for the [Bachelor of Computer Information Systems](http://www.ic.uff.br/index.php/en-GB/undergraduate-programs/information-systems) course at [Universidade Federal Fluminense](www.uff.br/)(UFF).
-* The main goal consists in create a user-friendly Web Interface to manage the [OSIRIS Framework](https://github.com/labtempo/osiris/wiki) modules [SensorNet](https://github.com/labtempo/osiris/wiki/2.1-M%C3%B3dulo-SensorNet) and [VirtualSensorNet](https://github.com/labtempo/osiris/wiki/2.2-M%C3%B3dulo-VirtualSensorNet).
 * The OSIRIS is a framework, created at UFF's [Labtempo](https://github.com/labtempo/), that allows the implementation of sensor-based network monitoring systems. For example: suppose one have a datacenter and wants to put sensors to monitor its temperature, luminosity or any measure to manage and keep track of that environment. So OSIRIS can solve that. OSIRIS was built to monitor any kind of environment.
 
 ## Authors
-
-* [Andre Ghigo](https://github.com/aghigo)
-* [Felippe Mauricio](https://github.com/felippemauricio)
+* [Felipe Ralph](https://github.com/println), creator of the [OSIRIS Framework](https://github.com/labtempo/osiris/wiki).
+* [Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
 
 ## Credits
-* [Raphael Guerra](http://www2.ic.uff.br/~rguerra/), Professor.
-* [Felipe Ralph](https://github.com/println), creator of the [OSIRIS Framework](https://github.com/labtempo/osiris/wiki).
+* [Andre Ghigo](https://github.com/aghigo), back-end developer (contributed by developing the web-interface back-end API)
+* [Felippe Mauricio](https://github.com/felippemauricio), front-end developer (contributed by developing the web-interface front-end app)
+
