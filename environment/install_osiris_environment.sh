@@ -97,7 +97,7 @@ nohup java -jar osiris-binaries/function/max/1.0.0/osiris-max-function-1.0.0.jar
 
 #Web Backend
 sudo apt-get install maven
-cd ~/Server/osiris-web-backend/impl
+cd ${OSIRIS_HOME}/osiris-web-backend/impl
 mvn clean install package -U
 
 #Web Frontend
